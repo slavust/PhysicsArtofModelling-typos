@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+pandoc \
+    -f latex+latex_macros \
+    -t markdown+tex_math_dollars+tex_math_single_backslash+table_captions \
+    --mathjax \
+    -o $2 \
+    ModifiedPreamble.tex \
+    $1
+sed -E 's|\\si\{([^\}]+)\}|\1|gI' -i $2
